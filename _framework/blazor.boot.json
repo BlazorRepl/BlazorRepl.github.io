@@ -6,7 +6,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "BlazorFiddlePoC.Client.dll": "sha256-Mev5K\/CzvJxOHW6tuVehM9UdSq2QFHLF7ddSoTtULh0=",
+      "BlazorFiddlePoC.Client.dll": "sha256-vM9VoWymhclmqq+APPaRCbv8O04ifoNnZdZ9QgrjxcE=",
       "System.Text.Json.dll": "sha256-HQeN+ZfHAERO+uW0fP0J9J3WV1hQ3vUIOWbqGSYBPp8=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-ZU\/LxbBfk6ofRNm5ssrK\/q6PzRLORfKvNAiEFjX0mYM=",
       "mscorlib.dll": "sha256-uaG3AW80GeXVlZrMLb3Q0VZ6jBkzXqzaUAgKgtZbStA=",
