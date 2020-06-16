@@ -3,17 +3,32 @@
 (function () {
     var editor;
 
-    window.App.initRepl = function (editorContainerId, resultContainerId, editorId) {
+    let throttleLastTimeFuncNameMappings = {};
+
+    window.App.initRepl = function (editorContainerId, resultContainerId, editorId, dotNetInstance) {
+        throttleLastTimeFuncNameMappings['compile'] = new Date();
+
         setElementHeight(editorContainerId);
         setElementHeight(resultContainerId);
 
         initReplSplitter(editorContainerId, resultContainerId, editorId);
 
+        // TODO: Remove event listeners on repl dispose
         window.addEventListener('resize', () => {
             setElementHeight(resultContainerId);
             setElementHeight(editorContainerId);
             resetEditor(editorId);
         });
+
+        window.addEventListener('keydown', e => {
+            // CTRL + S
+            if (e.ctrlKey && e.keyCode === 83) {
+                e.preventDefault();
+                if (dotNetInstance && dotNetInstance.invokeMethodAsync) {
+                    throttle(() => dotNetInstance.invokeMethodAsync('OnCompileEvent'), 1000, 'compile')
+                }
+            }
+        })
     }
 
     window.App.reloadIFrame = function (id) {
@@ -78,13 +93,21 @@
         }
     }
 
+    function throttle(func, timeFrame, id) {
+        const now = new Date();
+        if (now - throttleLastTimeFuncNameMappings[id] >= timeFrame) {
+            func();
+            throttleLastTimeFuncNameMappings[id] = now;
+        }
+    }
+
     function initReplSplitter(editorContainerId, resultContainerId, editorId) {
         if (editorContainerId &&
             resultContainerId &&
             document.getElementById(editorContainerId) &&
             document.getElementById(resultContainerId)) {
 
-            var lastTime = 0;
+            throttleLastTimeFuncNameMappings['resetEditor'] = new Date();
             Split(['#' + editorContainerId, '#' + resultContainerId], {
                 elementStyle: (dimension, size, gutterSize) => ({
                     'flex-basis': `calc(${size}% - ${gutterSize + 1}px)`,
@@ -92,17 +115,9 @@
                 gutterStyle: (dimension, gutterSize) => ({
                     'flex-basis': `${gutterSize}px`,
                 }),
-                onDrag: () => throttle(() => resetEditor(editorId), 100),
+                onDrag: () => throttle(() => resetEditor(editorId), 100, 'resetEditor'),
                 onDragEnd: () => resetEditor(editorId)
             });
-
-            function throttle(func, timeFrame) {
-                const now = new Date();
-                if (now - lastTime >= timeFrame) {
-                    func();
-                    lastTime = now;
-                }
-            }
         }
     };
 
