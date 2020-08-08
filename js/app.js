@@ -12,6 +12,21 @@
             }
 
             window.history.pushState(null, null, url);
+        },
+        copyToClipboard: function (text) {
+            if (!text) {
+                return;
+            }
+
+            const input = document.createElement('textarea');
+            input.style.top = '0';
+            input.style.left = '0';
+            input.style.position = 'fixed';
+            input.innerHTML = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
         }
     };
 }());

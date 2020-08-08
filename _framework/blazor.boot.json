@@ -8,7 +8,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "BlazorRepl.Client.dll": "sha256-XGofAcyN16leHnKUKGxgjJLfP\/OI3XUTSNRB86YSrB8=",
+      "BlazorRepl.Client.dll": "sha256-rFSRDbY+GQwKlKRmBpLRIaZCinWoxD9EdReBNTTCSIo=",
       "System.Text.Json.dll": "sha256-a3DMcVkTwIWQ8rXbNdb7E5Gp6FSXTh5XOSFxBz8aIkU=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-kL\/omZDwqByAi+lPdMeDmr3XjHcn4RVb+LmZ4mut1Yc=",
       "mscorlib.dll": "sha256-BaZPMj95+YNe3G4ckTGD6szZFwZeA2MOHn91zTGKDeU=",
