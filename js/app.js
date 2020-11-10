@@ -17,14 +17,6 @@
 
             window.history.pushState(null, null, url);
         },
-        focusElement: function (selector) {
-            if (!selector) {
-                return;
-            }
-
-            const element = document.querySelector(selector);
-            element && element.focus();
-        },
         copyToClipboard: function (text) {
             if (!text) {
                 return;
@@ -99,7 +91,7 @@ window.App.TabManager = window.App.TabManager || (function () {
     let _newTabInput;
 
     function onNewTabInputKeyDown(ev) {
-        if (ev.keyCode == ENTER_KEY_CODE) {
+        if (ev.keyCode === ENTER_KEY_CODE) {
             ev.preventDefault();
 
             if (_dotNetInstance && _dotNetInstance.invokeMethodAsync) {
@@ -127,6 +119,8 @@ window.App.TabManager = window.App.TabManager || (function () {
 }());
 
 window.App.Repl = window.App.Repl || (function () {
+    const S_KEY_CODE = 83;
+
     const throttleLastTimeFuncNameMappings = {};
 
     let _dotNetInstance;
@@ -142,7 +136,7 @@ window.App.Repl = window.App.Repl || (function () {
             // TODO: Abstract class names
             let height =
                 window.innerHeight -
-                document.getElementsByClassName('repl-navbar')[0].offsetHeight
+                document.getElementsByClassName('repl-navbar')[0].offsetHeight;
 
             if (excludeTabsHeight) {
                 height -= document.getElementsByClassName('tabs-wrapper')[0].offsetHeight;
@@ -194,8 +188,7 @@ window.App.Repl = window.App.Repl || (function () {
     }
 
     function onKeyDown(e) {
-        // CTRL + S
-        if (e.ctrlKey && e.keyCode === 83) {
+        if (e.ctrlKey && e.keyCode === S_KEY_CODE) {
             e.preventDefault();
 
             if (_dotNetInstance && _dotNetInstance.invokeMethodAsync) {
