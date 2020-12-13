@@ -9,7 +9,7 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
-      "BlazorRepl.Client.dll": "sha256-TkEtGk5bP6HOqkjRF43NRH44oKLIgFXgA3krcCFdUN0=",
+      "BlazorRepl.Client.dll": "sha256-usABP3CnEq52vX1P3HiSC7JtdJtPdmMl7EdcDshEt6s=",
       "Microsoft.CSharp.dll": "sha256-JWW\/4VOX8B0ELTP\/v4O7wlgWY8ZyVIv0BTIRIv2TJBw=",
       "Microsoft.VisualBasic.Core.dll": "sha256-\/9kBfwlTqN2R\/tiMVV76A72VsrUfSVAYs2v\/5mi38Mk=",
       "Microsoft.VisualBasic.dll": "sha256-WrQGoCtjVGnegfi0WxOTvOc0kZXDcuJ\/tg3XRe6YPlw=",
